@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('cancha_id')->constrained()->onDelete('cascade');  
+            // $table->foreignId('cancha_id')->constrained()->onDelete('cascade');  
             $table->decimal('duración_horas', 4,2);
             $table->decimal('precio_alquiler_total', 10,2);
             $table->decimal('monto_comprobante', 10,2);

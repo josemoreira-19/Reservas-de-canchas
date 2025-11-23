@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('reservas', function (Blueprint $table) {
         $table->foreignId('factura_id')->nullable()->constrained()->onDelete('set null');
+        $table->foreignId('cancha_id')->constrained()->onDelete('cascade');  
+
 
         });
     }
