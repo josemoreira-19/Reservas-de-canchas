@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('cancha_id')->constrained('canchas')->onDelete('cascade');  
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cancha_id')->constrained()->onDelete('cascade');  
+            $table->decimal('duración_horas', 4,2);
+            $table->decimal('precio_alquiler_total', 10,2);
+            $table->decimal('monto_comprobante', 10,2);
             $table->date('fecha');
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->enum('estado', ['pendiente', 'confirmada', 'cancelada'])->default('pendiente');
+            // $table->foregnId('factura_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();           
         });
     }

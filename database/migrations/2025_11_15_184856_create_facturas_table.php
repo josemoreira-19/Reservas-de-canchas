@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pagos', function (Blueprint $table) {
+        Schema::create('facturas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reservas_id')->constrained('reservas')->onDelete('cascade');
-            $table->decimal('monto', 8, 2);  
+            $table->date('fecha_emision');
+            $table->decimal('subtotal', 10, 2);
+            $table->decimal('impuestos', 10, 2);  
+            $table->decimal('total', 10, 2);
             $table->enum('metodo', ['efectivo', 'transferencia', 'targeta'])->default('efectivo');
             $table->enum('pago', ['pendiente', 'pagado'])->default('pendiente');
             $table->timestamps();
